@@ -1,4 +1,4 @@
-# 349. Intersection of Two Arrays
+// 349. Intersection of Two Arrays
 
 class Solution {
 public:

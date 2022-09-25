@@ -11,8 +11,9 @@ public:
         int end = s.size()-1;
         
         while (start <= end){
-            iter_swap(s.begin()+start, s.begin()+end);
-            // swap(s[begin],s[end]);
+            // swap is faster
+            //iter_swap(s.begin()+start, s.begin()+end);
+            swap(s[begin],s[end]);
             start++;
             end--;
         }

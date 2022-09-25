@@ -1,5 +1,6 @@
 // 204. Count Primes
 
+// Much Faster Solution Updated
 class Solution {
 public:
     // 2 3 5 7 11 13 ...
@@ -11,16 +12,23 @@ public:
             return 0;
         // true -> prime
         vector<bool> dp(n,true);
+        int res = n - 2; // no 0 and 1
         dp[0] = false;
         dp[1] = false;
         
-        // use prime times 2+ to get all non-prime
-        for (int i = 0; i < sqrt(n); i++){
-            if (dp[i])
-                for (int j = 2; j*i < n; j++)
-                    dp[i*j] = false;
+        // use prime times (number_greater_than_that_prime) to get all non-prime
+        for (int i = 2; i < sqrt(n); i++){
+            if (!dp[i])
+                continue;
+            // use + is much faster than * !!!!!!!
+            for (int j = i*i; j < n; j+=i){
+                // no count duplicate
+                if (dp[j])
+                    res--;
+                dp[j] = false;
+            }       
         }
         
-        return count(dp.begin(),dp.end(),true);
+        return res;
     }
 };

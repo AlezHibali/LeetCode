@@ -1,3 +1,26 @@
+// modified for not only a-z
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        if (s.size() != t.size())
+            return false;
+        
+        unordered_map<char, int> st;
+        for (auto i : s)
+            st[i]++;
+        for (auto i : t){
+            if (st.find(i) == st.end() || st[i] == 0)
+                return false;
+            else
+                st[i]--;
+        }
+        
+        return true;
+    }
+};
+
+
+// first attempt
 class Solution {
 public:
     bool isAnagram(string s, string t) {

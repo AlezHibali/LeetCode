@@ -1,3 +1,23 @@
+// more clear version of first attempt
+class SolutionClear {
+public:
+    int firstUniqChar(string s) {
+        map<char, int> st;
+        
+        for (int i = 0; i < s.size(); i++){
+            st[s[i]]++;
+        }
+        
+        for (int i = 0; i < s.size(); i++){
+            if (st[s[i]] == 1)
+                return i;
+        }
+        
+        return -1;
+    }
+};
+
+// first attempt
 class Solution {
 public:
     int firstUniqChar(string s) {

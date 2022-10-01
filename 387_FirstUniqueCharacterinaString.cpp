@@ -1,3 +1,17 @@
+// inspired by Discussion
+class Solution85 {
+public:
+    int firstUniqChar(string s) {
+        vector<int> st (26,0);
+        for (auto i : s)
+            st[i-'a']++;
+        for (int i = 0; i < s.size(); i++)
+            if (st[s[i]-'a'] == 1)
+                return i;
+        return -1;
+    }
+};
+
 // more clear version of first attempt
 class SolutionClear {
 public:

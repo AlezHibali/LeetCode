@@ -1,3 +1,25 @@
+// Optimized version of a-z
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        if (s.size() != t.size())
+            return false;
+        
+        vector<int> st (26,0);
+        
+        for (int i = 0; i < s.size(); i++){
+            st[s[i]-'a']++;
+            st[t[i]-'a']--;
+        }
+
+        for (auto i : st)
+            if (i != 0)
+                return false;
+        
+        return true;
+    }
+};
+
 // modified for not only a-z
 class Solution {
 public:

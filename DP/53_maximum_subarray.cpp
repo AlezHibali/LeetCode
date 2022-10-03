@@ -1,3 +1,32 @@
+// optimized version (i dont even need dp[])
+class Solution {
+public:
+    // dp: for each entry, if dp[i-1] is negative, keep itself
+    // else add dp[i-1] to itself
+    int maxSubArray(vector<int>& nums) {
+        if (nums.size() == 1)
+            return nums[0];
+
+        int temp;
+        int res = nums[0];
+        int prev = nums[0];
+        
+        for (int i = 1; i < nums.size(); i++){
+            if (prev < 0)
+                temp = nums[i];
+            else
+                temp = nums[i] + prev;
+            
+            if (temp > res)
+                res = temp;
+            prev = temp;
+        }
+        
+        return res;
+    }
+};
+
+// first attemp
 class Solution {
 public:
     // dp: for each entry, if dp[i-1] is negative, keep itself

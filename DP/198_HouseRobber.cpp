@@ -1,3 +1,24 @@
+// 0ms inspired by Discussion
+class Solution {
+public:
+    // two options: include or exclude
+    // if include, add prev ex to current
+    // if exclude, max(prev ex, prev in)
+    int rob(vector<int>& nums) {
+        int i = 0;
+        int e = 0;
+        
+        for (auto n : nums){
+            int temp = i;
+            i = e + n;
+            e = max(e,temp);         
+        }
+        
+        return max(i,e);
+    }
+};
+
+// first attempt 40%
 class Solution {
 public:
     // jump two or three steps backward to see which 
